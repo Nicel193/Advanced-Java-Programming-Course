@@ -11,6 +11,9 @@ import java.time.Period;
 import java.time.ZonedDateTime;
 import java.util.*;
 
+/**
+ * @author Kukuiev Ruslan KN-221A
+ */
 public class PsychologistWithStreams extends PsychologistWithList {
 
     PsychologistWithStreams() {
@@ -35,6 +38,11 @@ public class PsychologistWithStreams extends PsychologistWithList {
         return result.toString();
     }
 
+    /**
+     * Finds rows that contain the desired word
+     * @param text Keyword
+     * @return Sorted receptions
+     */
     public Reception[] find_reception_by_comment(String text) {
         return Arrays.stream(get_receptions()).filter((hour -> {
             for (String word : hour.get_comment().split("\\s")) {
@@ -87,6 +95,10 @@ public class PsychologistWithStreams extends PsychologistWithList {
         return this;
     }
 
+    /**
+     * Creates a new file and writes text to it
+     * @throws IOException
+     */
     public static void writeToFileTxt(PsychologistWithStreams doctor, String filename) {
         try (FileWriter writer = new FileWriter(filename)) {
             Program.logger.info("Write to text file");
@@ -97,6 +109,10 @@ public class PsychologistWithStreams extends PsychologistWithList {
         }
     }
 
+    /**
+     * Reading data from the file and initializing the object PsychologistWithList
+     * @throws IOException
+     */
     public static PsychologistWithStreams readFromFileTxt(String filename) {
         PsychologistWithStreams doctor = new PsychologistWithStreams();
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
@@ -162,8 +178,8 @@ public class PsychologistWithStreams extends PsychologistWithList {
 
         System.out.println("\n=========================================================================");
         System.out.println("Серіалізація й десеріалізація за допомогою TXT:");
-        writeToFileTxt(this, "firsttaskfiles/Psychologist.txt");
-        System.out.println((PsychologistWithStreams)readFromFileTxt("firsttaskfiles/Psychologist.txt"));
+        writeToFileTxt(this, Program.PathToFiles + ".txt");
+        System.out.println((PsychologistWithStreams)readFromFileTxt(Program.PathToFiles + ".txt"));
 
         new XMLPsychologist(this).test();
         new JSONPsychologist(this).test();

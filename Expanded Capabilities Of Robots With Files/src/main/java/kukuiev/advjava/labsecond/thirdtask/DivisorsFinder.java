@@ -3,6 +3,9 @@ package kukuiev.advjava.labsecond.thirdtask;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
+/**
+ * @author Kukuiev Ruslan KN-221A
+ */
 public class DivisorsFinder {
     public static void main(String[] args) {
         System.out.println(Arrays.toString(findDivisors(14)));

@@ -3,6 +3,9 @@ package kukuiev.advjava.labsecond.firsttask;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * @author Kukuiev Ruslan KN-221A
+ */
 public class PsychologistWithList extends Doctor {
     private List<Reception> receptions = new ArrayList<>();
 

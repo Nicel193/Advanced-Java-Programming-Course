@@ -13,7 +13,17 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
 
+/**
+ * @author Kukuiev Ruslan KN-221A
+ */
 public class AcademicGroupJSON {
+
+    private static final String Path = "./similartasksfiles/AcademicGroup.json";
+
+    /**
+     * Creates a new file and writes text to it
+     * @throws IOException
+     */
     public static void JSONSerialization() {
         XStream xStream = new XStream(new JsonHierarchicalStreamDriver());
         AcademicGroup academicGroup = new AcademicGroup(Arrays.asList(
@@ -26,7 +36,7 @@ public class AcademicGroupJSON {
         xStream.alias("students", Student.class);
 
         String json = xStream.toXML(academicGroup);
-        try (FileWriter fw = new FileWriter("./similartasksfiles/AcademicGroup.json"); PrintWriter out = new PrintWriter(fw)) {
+        try (FileWriter fw = new FileWriter(Path); PrintWriter out = new PrintWriter(fw)) {
             out.println(json);
             System.out.println("Файл сереалізовано");
         } catch (IOException e) {
@@ -34,6 +44,10 @@ public class AcademicGroupJSON {
         }
     }
 
+    /**
+     * Reading data from the file and initializing the object PsychologistWithList
+     * @throws IOException
+     */
     public static void JSONDeserialization() {
         XStream xStream = new XStream(new JettisonMappedXmlDriver());
         xStream.addPermission(AnyTypePermission.ANY);
@@ -42,7 +56,7 @@ public class AcademicGroupJSON {
         xStream.addImplicitCollection(AcademicGroup.class, "students");
         xStream.alias("students", Student.class);
 
-        AcademicGroup academicGroup = (AcademicGroup) xStream.fromXML(new File("./similartasksfiles/AcademicGroup.json"));
+        AcademicGroup academicGroup = (AcademicGroup) xStream.fromXML(new File(Path));
 
         if (academicGroup != null) {
             System.out.println("Файл десеріалізовано");

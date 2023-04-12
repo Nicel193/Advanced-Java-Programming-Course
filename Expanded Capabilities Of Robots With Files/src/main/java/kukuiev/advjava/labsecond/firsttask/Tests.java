@@ -6,6 +6,9 @@ import java.time.ZonedDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * @author Kukuiev Ruslan KN-221A
+ */
 public class Tests {
 
     private PsychologistWithList initDoctor() {

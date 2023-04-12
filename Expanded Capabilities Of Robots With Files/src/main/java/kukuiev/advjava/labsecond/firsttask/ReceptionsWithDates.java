@@ -6,6 +6,9 @@ import java.time.format.FormatStyle;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+/**
+ * @author Kukuiev Ruslan KN-221A
+ */
 public class ReceptionsWithDates extends Reception {
     private ZonedDateTime reception_date;
 

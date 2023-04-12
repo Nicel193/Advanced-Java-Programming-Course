@@ -1,5 +1,8 @@
 package kukuiev.advjava.labsecond.firsttask;
 
+/**
+ * @author Kukuiev Ruslan KN-221A
+ */
 public class Reception implements Comparable<Reception> {
     private String day;
     private String comment;

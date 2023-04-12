@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * @author Kukuiev Ruslan KN-221A
+ */
 public class AcademicGroup {
     private List<Student> students;
 

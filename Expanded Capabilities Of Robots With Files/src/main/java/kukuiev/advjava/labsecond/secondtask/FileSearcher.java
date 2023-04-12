@@ -6,6 +6,9 @@ import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Scanner;
 
+/**
+ * @author Kukuiev Ruslan KN-221A
+ */
 public class FileSearcher {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in); // Створення об'єкту Scanner
@@ -16,7 +19,10 @@ public class FileSearcher {
         FindWithNIO(directoryPath);
     }
 
-    // Пошук за допомогою java.io.File
+    /**
+     * Search using java.io.File
+     * @param directoryPath
+     */
     private static void FindWithIO(String directoryPath) {
         System.out.println("Пошук файлів та каталогів в " + directoryPath + " за допомогою java.io.File: ");
         File directory = new File(directoryPath);
@@ -27,9 +33,12 @@ public class FileSearcher {
         }
     }
 
+    /**
+     * Search using java.nio.file
+     * @param directoryPath
+     */
     private static void FindWithNIO(String directoryPath) {
         try {
-            // Пошук за допомогою java.nio.file
             System.out.println("\nПошук файлів та каталогів в " + directoryPath + " за допомогою java.nio.file: ");
             Path directoryPathObj = Paths.get(directoryPath);
             if (!Files.exists(directoryPathObj) || !Files.isDirectory(directoryPathObj)) {

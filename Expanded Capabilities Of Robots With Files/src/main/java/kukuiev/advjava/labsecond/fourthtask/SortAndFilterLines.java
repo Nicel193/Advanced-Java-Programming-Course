@@ -6,6 +6,9 @@ import java.nio.file.Path;
 import java.util.Comparator;
 import java.util.stream.Collectors;
 
+/**
+ * @author Kukuiev Ruslan KN-221A
+ */
 public class SortAndFilterLines {
     public static void main(String[] args) throws IOException {
         Path inputPath = Path.of("src/main/resources/input.txt");

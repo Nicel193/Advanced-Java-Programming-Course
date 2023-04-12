@@ -12,7 +12,12 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
 
+/**
+ * @author Kukuiev Ruslan KN-221A
+ */
 public class AcademicGroupOrgJSON {
+    private static final String Path = "./similartasksfiles/AcademicGroupOrg.json";
+
     public static void JSONSerialization() throws JSONException, IOException {
         AcademicGroup academicGroup = new AcademicGroup(Arrays.asList(
                 new Student("Ruslan Kukuiev", 19),
@@ -33,7 +38,7 @@ public class AcademicGroupOrgJSON {
         academicGroupElement.put("students", studentsElements);
         academicGroupWrapper.put("academicGroup", academicGroupElement);
 
-        try (FileWriter file = new FileWriter("./similartasksfiles/AcademicGroupOrg.json")) {
+        try (FileWriter file = new FileWriter(Path)) {
             file.write(academicGroupWrapper.toString());
             System.out.println("Файл сереалізовано");
         } catch (IOException e) {
@@ -42,7 +47,7 @@ public class AcademicGroupOrgJSON {
     }
 
     public static void JSONDeserialization() throws JSONException, IOException {
-        String json = new String(Files.readAllBytes(Paths.get("./similartasksfiles/AcademicGroupOrg.json")));
+        String json = new String(Files.readAllBytes(Paths.get(Path)));
         JSONObject jsonElement = new JSONObject(json);
         AcademicGroup academicGroup = new AcademicGroup();
 

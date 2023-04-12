@@ -2,35 +2,35 @@
   <surname>Іванов</surname>
   <experience>12</experience>
   <receptions>
-    <kukuiev.advjava.labsecond.firsttask.ReceptionsWithDates>
-      <day>неділя, 12 березня 2023 р.</day>
+    <receptions>
+      <day>понеділок, 13 березня 2023 р.</day>
       <comment>comment5</comment>
       <number__visitors>1</number__visitors>
-      <reception__date>2023-03-12T23:35:08.8382733+02:00[Europe/Kiev]</reception__date>
-    </kukuiev.advjava.labsecond.firsttask.ReceptionsWithDates>
-    <kukuiev.advjava.labsecond.firsttask.ReceptionsWithDates>
-      <day>субота, 1 квітня 2023 р.</day>
+      <reception__date>2023-03-13T10:31:16.5129989+02:00[Europe/Kiev]</reception__date>
+    </receptions>
+    <receptions>
+      <day>неділя, 2 квітня 2023 р.</day>
       <comment>comment2</comment>
       <number__visitors>2</number__visitors>
-      <reception__date>2023-04-01T23:35:08.8372723+03:00[Europe/Kiev]</reception__date>
-    </kukuiev.advjava.labsecond.firsttask.ReceptionsWithDates>
-    <kukuiev.advjava.labsecond.firsttask.ReceptionsWithDates>
-      <day>неділя, 16 квітня 2023 р.</day>
+      <reception__date>2023-04-02T10:31:16.5129989+03:00[Europe/Kiev]</reception__date>
+    </receptions>
+    <receptions>
+      <day>понеділок, 17 квітня 2023 р.</day>
       <comment>comment4</comment>
       <number__visitors>3</number__visitors>
-      <reception__date>2023-04-16T23:35:08.8382733+03:00[Europe/Kiev]</reception__date>
-    </kukuiev.advjava.labsecond.firsttask.ReceptionsWithDates>
-    <kukuiev.advjava.labsecond.firsttask.ReceptionsWithDates>
-      <day>четвер, 6 квітня 2023 р.</day>
+      <reception__date>2023-04-17T10:31:16.5129989+03:00[Europe/Kiev]</reception__date>
+    </receptions>
+    <receptions>
+      <day>пʼятниця, 7 квітня 2023 р.</day>
       <comment>comment1</comment>
       <number__visitors>5</number__visitors>
-      <reception__date>2023-04-06T23:35:08.8282766+03:00[Europe/Kiev]</reception__date>
-    </kukuiev.advjava.labsecond.firsttask.ReceptionsWithDates>
-    <kukuiev.advjava.labsecond.firsttask.ReceptionsWithDates>
-      <day>неділя, 5 лютого 2023 р.</day>
+      <reception__date>2023-04-07T10:31:16.5069999+03:00[Europe/Kiev]</reception__date>
+    </receptions>
+    <receptions>
+      <day>понеділок, 6 лютого 2023 р.</day>
       <comment>comment3</comment>
       <number__visitors>10</number__visitors>
-      <reception__date>2023-02-05T23:35:08.8372723+02:00[Europe/Kiev]</reception__date>
-    </kukuiev.advjava.labsecond.firsttask.ReceptionsWithDates>
+      <reception__date>2023-02-06T10:31:16.5129989+02:00[Europe/Kiev]</reception__date>
+    </receptions>
   </receptions>
 </kukuiev.advjava.labsecond.firsttask.PsychologistWithStreams>

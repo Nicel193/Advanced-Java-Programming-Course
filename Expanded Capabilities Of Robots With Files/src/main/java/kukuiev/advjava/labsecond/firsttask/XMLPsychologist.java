@@ -8,6 +8,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**
+ * @author Kukuiev Ruslan KN-221A
+ */
 public class XMLPsychologist {
     private PsychologistWithList doctor;
 
@@ -15,14 +18,18 @@ public class XMLPsychologist {
         this.doctor = doctor;
     }
 
+    /**
+     * Creates a new file and writes text to it
+     * @throws IOException
+     */
     private void Serialization() {
         XStream xStream = new XStream();
 
         xStream.alias("doctor", PsychologistWithList.class);
-        xStream.alias("receptions", Reception.class);
+        xStream.alias("receptions", ReceptionsWithDates.class);
 
         String xml = xStream.toXML(doctor);
-        try (FileWriter fw = new FileWriter("./firsttaskfiles/Psychologist.xml"); PrintWriter out = new PrintWriter(fw)) {
+        try (FileWriter fw = new FileWriter(Program.PathToFiles + ".xml"); PrintWriter out = new PrintWriter(fw)) {
             out.println(xml);
             Program.logger.info("Serializing to XML");
         } catch (IOException e) {
@@ -30,14 +37,18 @@ public class XMLPsychologist {
         }
     }
 
+    /**
+     * Reading data from the file and initializing the object PsychologistWithList
+     * @throws IOException
+     */
     private void Deserialization() throws IOException {
         XStream xStream = new XStream();
         xStream.addPermission(AnyTypePermission.ANY);
 
         xStream.alias("doctor", PsychologistWithList.class);
-        xStream.alias("receptions", Reception.class);
+        xStream.alias("receptions", ReceptionsWithDates.class);
 
-        doctor = (PsychologistWithList) xStream.fromXML(new File("./firsttaskfiles/Psychologist.xml"));
+        doctor = (PsychologistWithList) xStream.fromXML(new File(Program.PathToFiles + ".xml"));
 
         if (doctor != null) {
             System.out.println(doctor);

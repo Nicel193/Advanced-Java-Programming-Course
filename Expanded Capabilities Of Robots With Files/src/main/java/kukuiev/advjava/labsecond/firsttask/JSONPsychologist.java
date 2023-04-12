@@ -8,6 +8,9 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
+/**
+ * @author Kukuiev Ruslan KN-221A
+ */
 public class JSONPsychologist {
 
     private PsychologistWithList doctor;
@@ -16,18 +19,26 @@ public class JSONPsychologist {
         this.doctor = doctor;
     }
 
+    /**
+     * Creates a new file and writes text to it
+     * @throws IOException
+     */
     private void Serialization() throws IOException{
         XStream xstream = new XStream(new JettisonMappedXmlDriver());
         xstream.addPermission(AnyTypePermission.ANY);
         String json = xstream.toXML(doctor);
-        Files.writeString(new File("./firsttaskfiles/Psychologist.json").toPath(), json);
+        Files.writeString(new File(Program.PathToFiles + ".json").toPath(), json);
         Program.logger.info("Serializing to JSON");
     }
 
+    /**
+     * Reading data from the file and initializing the object PsychologistWithList
+     * @throws IOException
+     */
     private void Deserialization() throws IOException{
         XStream xstream = new XStream(new JettisonMappedXmlDriver());
         xstream.addPermission(AnyTypePermission.ANY);
-        String json = Files.readString(new File("./firsttaskfiles/Psychologist.json").toPath());
+        String json = Files.readString(new File(Program.PathToFiles + ".json").toPath());
         doctor = (PsychologistWithList) xstream.fromXML(json);
         Program.logger.info("Deserializing from JSON");
     }

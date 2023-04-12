@@ -10,7 +10,17 @@ import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
+/**
+ * @author Kukuiev Ruslan KN-221A
+ */
 public class AcademicGroupTXT {
+
+    private static final String Path = "./similartasksfiles/AcademicGroup.txt";
+
+    /**
+     * Creates a new file and writes text to it
+     * @throws IOException
+     */
     public static void Serialization() {
         AcademicGroup academicGroup = new AcademicGroup(Arrays.asList(
                 new Student("Ruslan Kukuiev", 19),
@@ -18,7 +28,7 @@ public class AcademicGroupTXT {
                 new Student("Kakoito Noname", 20)
         ));
 
-        try (PrintWriter writer = new PrintWriter("./similartasksfiles/AcademicGroup.txt")) {
+        try (PrintWriter writer = new PrintWriter(Path)) {
             academicGroup.getStudents().stream()
                     .map(Student::toString)
                     .forEach(writer::println);
@@ -29,11 +39,15 @@ public class AcademicGroupTXT {
         }
     }
 
+    /**
+     * Reading data from the file and initializing the object PsychologistWithList
+     * @throws IOException
+     */
     public static void Deserialization() {
 
         AcademicGroup academicGroup = new AcademicGroup();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("./similartasksfiles/AcademicGroup.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(Path))) {
             academicGroup = new AcademicGroup(reader.lines()
                     .map(line -> line.split("-"))
                     .map(parts -> new Student(parts[0], Integer.parseInt(parts[1])))

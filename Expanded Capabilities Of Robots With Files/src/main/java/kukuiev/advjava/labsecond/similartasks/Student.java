@@ -1,5 +1,8 @@
 package kukuiev.advjava.labsecond.similartasks;
 
+/**
+ * @author Kukuiev Ruslan KN-221A
+ */
 public class Student {
     private String name;
     private int age;
