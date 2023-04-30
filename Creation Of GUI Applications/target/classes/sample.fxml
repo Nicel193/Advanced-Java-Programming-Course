@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <TextField fx:id="number1Field" promptText="Enter a number" />
+    <TextField fx:id="number2Field" promptText="Enter another number" />
+    <HBox spacing="10.0">
+        <RadioButton fx:id="addRadioButton" mnemonicParsing="false" selected="true" text="Add" />
+        <RadioButton fx:id="subtractRadioButton" mnemonicParsing="false" text="Subtract" />
+        <RadioButton fx:id="multiplyRadioButton" mnemonicParsing="false" text="Multiply" />
+        <RadioButton fx:id="divideRadioButton" mnemonicParsing="false" text="Divide" />
+    </HBox>
+    <Button fx:id="calculateButton" onAction="#calculate" text="Calculate" />
+    <TextField fx:id="resultField" editable="false" promptText="Result will be displayed here" />
+</VBox>
