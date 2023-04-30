@@ -3,34 +3,34 @@
   <experience>12</experience>
   <receptions>
     <receptions>
-      <day>понеділок, 13 березня 2023 р.</day>
+      <day>понеділок, 20 березня 2023 р.</day>
       <comment>comment5</comment>
       <number__visitors>1</number__visitors>
-      <reception__date>2023-03-13T10:31:16.5129989+02:00[Europe/Kiev]</reception__date>
+      <reception__date>2023-03-20T09:54:32.064441+02:00[Europe/Kiev]</reception__date>
     </receptions>
     <receptions>
-      <day>неділя, 2 квітня 2023 р.</day>
+      <day>неділя, 9 квітня 2023 р.</day>
       <comment>comment2</comment>
       <number__visitors>2</number__visitors>
-      <reception__date>2023-04-02T10:31:16.5129989+03:00[Europe/Kiev]</reception__date>
+      <reception__date>2023-04-09T09:54:32.064441+03:00[Europe/Kiev]</reception__date>
     </receptions>
     <receptions>
-      <day>понеділок, 17 квітня 2023 р.</day>
+      <day>понеділок, 24 квітня 2023 р.</day>
       <comment>comment4</comment>
       <number__visitors>3</number__visitors>
-      <reception__date>2023-04-17T10:31:16.5129989+03:00[Europe/Kiev]</reception__date>
+      <reception__date>2023-04-24T09:54:32.064441+03:00[Europe/Kiev]</reception__date>
     </receptions>
     <receptions>
-      <day>пʼятниця, 7 квітня 2023 р.</day>
+      <day>пʼятниця, 14 квітня 2023 р.</day>
       <comment>comment1</comment>
       <number__visitors>5</number__visitors>
-      <reception__date>2023-04-07T10:31:16.5069999+03:00[Europe/Kiev]</reception__date>
+      <reception__date>2023-04-14T09:54:32.0584414+03:00[Europe/Kiev]</reception__date>
     </receptions>
     <receptions>
-      <day>понеділок, 6 лютого 2023 р.</day>
+      <day>понеділок, 13 лютого 2023 р.</day>
       <comment>comment3</comment>
       <number__visitors>10</number__visitors>
-      <reception__date>2023-02-06T10:31:16.5129989+02:00[Europe/Kiev]</reception__date>
+      <reception__date>2023-02-13T09:54:32.064441+02:00[Europe/Kiev]</reception__date>
     </receptions>
   </receptions>
 </kukuiev.advjava.labsecond.firsttask.PsychologistWithStreams>

@@ -11,10 +11,10 @@ import java.util.stream.Collectors;
  */
 public class SortAndFilterLines {
     public static void main(String[] args) throws IOException {
-        Path inputPath = Path.of("src/main/resources/input.txt");
-        Path outputPath = Path.of("src/main/resources/output.txt");
-
         try {
+            Path inputPath = Path.of("src/main/resources/input.txt");
+            Path outputPath = Path.of("src/main/resources/output.txt");
+
             String output = Files.lines(inputPath)
                     .sorted(Comparator.comparingInt(String::length))
                     .filter(line -> line.contains("a"))

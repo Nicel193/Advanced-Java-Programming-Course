@@ -23,9 +23,9 @@ public class AcademicGroupTXT {
      */
     public static void Serialization() {
         AcademicGroup academicGroup = new AcademicGroup(Arrays.asList(
-                new Student("Ruslan Kukuiev", 19),
-                new Student("Vrunich Dunaj", 18),
-                new Student("Kakoito Noname", 20)
+                new Student("Kukuiev Ruslan", 19),
+                new Student("Kostuchenko Dunaj", 18),
+                new Student("Shulgenko Igor", 20)
         ));
 
         try (PrintWriter writer = new PrintWriter(Path)) {

@@ -1,6 +1,9 @@
 package kukuiev.advjava.labsecond.secondtask;
 
+import org.apache.logging.log4j.core.appender.rolling.FileExtension;
+
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
@@ -66,12 +69,12 @@ public class FileSearcher {
     }
 
     private static void listFilesAndDirectoriesWithFile(File directory) {
-        File[] files = directory.listFiles();
-        for (File file : files) {
-            System.out.println(file.getPath());
-            if (file.isDirectory()) {
-                listFilesAndDirectoriesWithFile(file);
+            File[] files = directory.listFiles();
+            for (File file : files) {
+                System.out.println(file.getPath());
+                if (file.isDirectory()) {
+                    listFilesAndDirectoriesWithFile(file);
+                }
             }
-        }
     }
 }

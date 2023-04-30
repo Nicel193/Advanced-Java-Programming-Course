@@ -25,9 +25,9 @@ public class AcademicGroupXML {
     public static void XMLSerialization() {
         XStream xStream = new XStream();
         AcademicGroup academicGroup = new AcademicGroup(Arrays.asList(
-                new Student("Ruslan Kukuiev", 19),
-                new Student("Vrunich Dunaj", 18),
-                new Student("Kakoito Noname", 20)
+                new Student("Kukuiev Ruslan", 19),
+                new Student("Kostuchenko Dunaj", 18),
+                new Student("Shulgenko Igor", 20)
         ));
 
         xStream.alias("academicGroup", AcademicGroup.class);
