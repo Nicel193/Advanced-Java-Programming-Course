@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class PsychologistWithList extends Doctor {
     private List<Reception> receptions = new ArrayList<>();
 
-    PsychologistWithList() {
+    public PsychologistWithList() {
     }
 
     PsychologistWithList(String surname, int experience) {

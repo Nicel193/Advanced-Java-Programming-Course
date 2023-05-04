@@ -1,4 +1,4 @@
-package tasksecond;
+package kukuiev.advjava.labthird.tasksecond;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

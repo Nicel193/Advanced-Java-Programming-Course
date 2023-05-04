@@ -1,4 +1,4 @@
-package kukuiev.advjava.labthird.firsttask;
+package kukuiev.advjava.labthird.firsttask.GUI;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -11,6 +11,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.FileChooser;
 import javafx.util.converter.IntegerStringConverter;
+import kukuiev.advjava.labthird.firsttask.PsychologistWithList;
+import kukuiev.advjava.labthird.firsttask.PsychologistWithStreams;
+import kukuiev.advjava.labthird.firsttask.Reception;
+import kukuiev.advjava.labthird.firsttask.XMLPsychologist;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,8 +28,6 @@ import java.util.regex.Pattern;
 public class DoctorController implements Initializable {
 
     private PsychologistWithList doctor;
-
-    // Список, вміст якого відображатиметься в таблиці:
     private ObservableList<Reception> observableList;
 
     @FXML
@@ -52,6 +54,22 @@ public class DoctorController implements Initializable {
     @FXML
     private TextArea textAreaResults;
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        tableViewCensuses.setPlaceholder(new Label(""));
+
+        Pattern validIntegerPattern = Pattern.compile("\\d{0,2}"); // Паттерн для цілих чисел
+        UnaryOperator<TextFormatter.Change> integerFilter = change -> {
+            String newText = change.getControlNewText();
+            if (validIntegerPattern.matcher(newText).matches()) { // Перевіряємо на довжину
+                return change;
+            }
+            return null;
+        };
+        TextFormatter<Integer> integerTextFormatter = new TextFormatter<>(new IntegerStringConverter(), null, integerFilter);
+        textFieldExperience.setTextFormatter(integerTextFormatter);
+    }
+
     @FXML
     void nameChanged(ActionEvent event) {
         doctor.set_surname(textFieldSurname.getText());
@@ -66,7 +84,7 @@ public class DoctorController implements Initializable {
     void doSearchByWord(ActionEvent event) {
         textAreaResults.setText("");
 
-        if(doctor == null) return;
+        if (doctor == null) return;
 
         for (int i = 0; i < doctor.get_receptions_count(); i++) {
             Reception c = (Reception) doctor.get_receptions()[i];
@@ -80,7 +98,7 @@ public class DoctorController implements Initializable {
     void doSearchBySubstring(ActionEvent event) {
         textAreaResults.setText("");
 
-        if(doctor == null) return;
+        if (doctor == null) return;
 
         for (int i = 0; i < doctor.get_receptions_count(); i++) {
             Reception c = (Reception) doctor.get_receptions()[i];
@@ -91,7 +109,7 @@ public class DoctorController implements Initializable {
     }
 
     private void showResults(Reception census) {
-        textAreaResults.appendText("Дата: " + census.getDay()+ "\n");
+        textAreaResults.appendText("Дата: " + census.getDay() + "\n");
         textAreaResults.appendText("Коментар: " + census.getComment() + "\n");
         textAreaResults.appendText("\n");
     }
@@ -108,52 +126,9 @@ public class DoctorController implements Initializable {
         tableViewCensuses.setPlaceholder(new Label(""));
     }
 
-    /**
-     * Створення діалогового вікна вибору файлів
-     *
-     * @param title - текст заголовку вікна
-     */
-    public static FileChooser getFileChooser(String title) {
-        FileChooser fileChooser = new FileChooser();
-        // Починаємо шукати з поточної теки:
-        fileChooser.setInitialDirectory(new File("."));
-        // Встановлюємо фільтри для пошуку файлів:
-        fileChooser.getExtensionFilters().add(
-                new FileChooser.ExtensionFilter("XML-файли (*.xml)", "*.xml"));
-        fileChooser.getExtensionFilters().add(
-                new FileChooser.ExtensionFilter("Усі файли (*.*)", "*.*"));
-        // Вказуємо заголовок вікна:
-        fileChooser.setTitle(title);
-        return fileChooser;
-    }
-
-    /**
-     * Діалогове вікно довільного повідомлення
-     *
-     * @param message - текст повідомлення
-     */
-    public static void showMessage(String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("");
-        alert.setHeaderText(message);
-        alert.showAndWait();
-    }
-
-    /**
-     * Діалогове вікно повідомлення про помилку
-     *
-     * @param message - текст повідомлення
-     */
-    public static void showError(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Помилка");
-        alert.setHeaderText(message);
-        alert.showAndWait();
-    }
-
     @FXML
     void doOpen(ActionEvent event) {
-        FileChooser fileChooser = getFileChooser("Відкрити XML-файл");
+        FileChooser fileChooser = PopUpWindow.getFileChooser("Відкрити XML-файл");
         File file;
         if ((file = fileChooser.showOpenDialog(null)) != null) {
             try {
@@ -166,25 +141,25 @@ public class DoctorController implements Initializable {
                 tableViewCensuses.setItems(null);
                 updateTable();
             } catch (IOException e) {
-                showError("Файл не знайдено");
+                PopUpWindow.showError("Файл не знайдено");
             } catch (Exception e) {
-                showError("Неправильний формат файлу");
+                PopUpWindow.showError("Неправильний формат файлу");
             }
         }
     }
 
     @FXML
     void doSave(ActionEvent event) {
-        FileChooser fileChooser = getFileChooser("Зберегти XML-файл");
+        FileChooser fileChooser = PopUpWindow.getFileChooser("Зберегти XML-файл");
         File file;
         if ((file = fileChooser.showSaveDialog(null)) != null) {
             try {
                 nameChanged(event);
                 experienceChanged(event);
                 XMLPsychologist.Serialization(doctor, file.getCanonicalPath());
-                showMessage("Результати успішно збережені");
+                PopUpWindow.showMessage("Результати успішно збережені");
             } catch (Exception e) {
-                showError("Помилка запису в файл");
+                PopUpWindow.showError("Помилка запису в файл");
             }
         }
     }
@@ -196,6 +171,8 @@ public class DoctorController implements Initializable {
 
     @FXML
     void doAdd(ActionEvent event) {
+        if(doctor == null) return;
+
         doctor.add_reception(new Reception("", "", 0));
         updateTable(); // створюємо нові дані
     }
@@ -214,12 +191,16 @@ public class DoctorController implements Initializable {
 
     @FXML
     void doSortByVisitors(ActionEvent event) {
+        if(doctor == null) return;
+
         doctor.sort_number_of_visitors();
         updateTable();
     }
 
     @FXML
     void doSortByComments(ActionEvent event) {
+        if(doctor == null) return;
+
         doctor.sort_alphabetic_comments();
         updateTable();
     }
@@ -239,48 +220,19 @@ public class DoctorController implements Initializable {
         observableList = FXCollections.observableList(receptions);
         tableViewCensuses.setItems(observableList);
 
+        UpdateTable updateTable = new UpdateTable();
+
         // Вказуємо для колонок зв'язану з ними властивість і механізм редагування
         tableColumnCountVisitors.setCellValueFactory(new PropertyValueFactory<>("number_visitors"));
         tableColumnCountVisitors.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        tableColumnCountVisitors.setOnEditCommit(t -> updateCountVisitors(t));
+        tableColumnCountVisitors.setOnEditCommit(t -> updateTable.updateCountVisitors(t));
 
         tableColumnDate.setCellValueFactory(new PropertyValueFactory<>("day"));
         tableColumnDate.setCellFactory(TextFieldTableCell.forTableColumn());
-        tableColumnDate.setOnEditCommit(t -> updateDate(t));
+        tableColumnDate.setOnEditCommit(t -> updateTable.updateDate(t));
 
         tableColumnComments.setCellValueFactory(new PropertyValueFactory<>("comment"));
         tableColumnComments.setCellFactory(TextFieldTableCell.forTableColumn());
-        tableColumnComments.setOnEditCommit(t -> updateComment(t));
-    }
-
-    private void updateComment(TableColumn.CellEditEvent<Reception, String> t) {
-        Reception c = t.getTableView().getItems().get(t.getTablePosition().getRow());
-        c.setComment(t.getNewValue());
-    }
-
-    private void updateDate(TableColumn.CellEditEvent<Reception, String> t) {
-        Reception c = t.getTableView().getItems().get(t.getTablePosition().getRow());
-        c.setDay(t.getNewValue());
-    }
-
-    private void updateCountVisitors(TableColumn.CellEditEvent<Reception, Integer> t) {
-        Reception c = t.getTableView().getItems().get(t.getTablePosition().getRow());
-        c.setNumber_visitors(t.getNewValue());
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        tableViewCensuses.setPlaceholder(new Label(""));
-
-        Pattern validIntegerPattern = Pattern.compile("\\d{0,2}"); // Паттерн для цілих чисел
-        UnaryOperator<TextFormatter.Change> integerFilter = change -> {
-            String newText = change.getControlNewText();
-            if (validIntegerPattern.matcher(newText).matches()) { // Перевіряємо на довжину
-                return change;
-            }
-            return null;
-        };
-        TextFormatter<Integer> integerTextFormatter = new TextFormatter<>(new IntegerStringConverter(), null, integerFilter);
-        textFieldExperience.setTextFormatter(integerTextFormatter);
+        tableColumnComments.setOnEditCommit(t -> updateTable.updateComment(t));
     }
 }

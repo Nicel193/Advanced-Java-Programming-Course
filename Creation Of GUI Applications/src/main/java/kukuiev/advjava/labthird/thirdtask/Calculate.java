@@ -1,4 +1,4 @@
-package thirdtask;
+package kukuiev.advjava.labthird.thirdtask;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;

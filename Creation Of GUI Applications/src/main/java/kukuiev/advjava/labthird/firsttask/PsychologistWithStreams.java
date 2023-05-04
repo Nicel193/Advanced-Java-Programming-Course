@@ -16,7 +16,7 @@ import java.util.*;
  */
 public class PsychologistWithStreams extends PsychologistWithList {
 
-    PsychologistWithStreams() {
+    public PsychologistWithStreams() {
 
     }
 

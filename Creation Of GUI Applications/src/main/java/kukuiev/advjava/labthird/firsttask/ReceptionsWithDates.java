@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
 public class ReceptionsWithDates extends Reception {
     private ZonedDateTime reception_date;
 
-    ReceptionsWithDates(ZonedDateTime reception_date, String comment, int number_visitors) {
+    public ReceptionsWithDates(ZonedDateTime reception_date, String comment, int number_visitors) {
         super(null, comment, number_visitors);
 
         this.reception_date = reception_date;

@@ -1,4 +1,4 @@
-package fourthtask;
+package kukuiev.advjava.labthird.fourthtask;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -15,7 +15,6 @@ import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -64,8 +63,8 @@ public class DictionaryController extends Application {
     // Остальной код
     @Override
     public void start(Stage stage) throws Exception {
-        Pane root = (Pane)FXMLLoader.load(getClass().getResource("/DictionaryD.fxml"));
-        Scene scene = new Scene(root, 580, 500);
+        Pane root = (Pane)FXMLLoader.load(getClass().getResource("Dictionary.fxml"));
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Переписи населення");
         stage.show();

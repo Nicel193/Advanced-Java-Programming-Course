@@ -1,7 +1,6 @@
 package kukuiev.advjava.labthird.firsttask;
 
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 /**
  * @author Kukuiev Ruslan KN-221A
@@ -37,7 +36,7 @@ public class Reception implements Comparable<Reception> {
 
     private int number_visitors;
 
-    Reception(String day, String comment, int number_visitors) {
+    public Reception(String day, String comment, int number_visitors) {
         this.day = day;
         this.comment = comment;
         this.number_visitors = number_visitors;
