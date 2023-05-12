@@ -3,10 +3,7 @@ package kukuiev.advjava.labthird.thirdtask;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -15,6 +12,11 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.math.BigDecimal;
+
+/**
+ * @author Kukuiev Ruslan KN-221A
+ **/
 public class Calculate extends Application {
 
     private TextField num1Field;
@@ -57,7 +59,6 @@ public class Calculate extends Application {
         resultField = new TextField();
         resultField.setEditable(false);
 
-        // Створюємо макет та додаємо елементи управління
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(10, 10, 10, 10));
         grid.setVgap(10);
@@ -73,13 +74,11 @@ public class Calculate extends Application {
         grid.add(resultLabel, 0, 5);
         grid.add(resultField, 1, 5);
 
-        // Створюємо контейнер VBox для макету та додаємо елементи управління
         VBox vbox = new VBox();
         vbox.setPadding(new Insets(10));
         vbox.setSpacing(10);
         vbox.getChildren().addAll(title, grid);
 
-        // Створюємо сцену та відображаємо її
         Scene scene = new Scene(vbox, 370, 250);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Калькулятор");
@@ -99,13 +98,24 @@ public class Calculate extends Application {
             } else if (mulRadio.isSelected()) {
                 result = num1 * num2;
             } else if (divRadio.isSelected()) {
+                if (num2 == 0) {
+                    ShowError("Не можна ділити на 0");
+                    return;
+                }
                 result = num1 / num2;
             }
 
-            resultField.setText(Double.toString(result));
+            resultField.setText(BigDecimal.valueOf(result).toString());
         } catch (NumberFormatException e) {
-            resultField.setText("Невірний ввід");
+            ShowError("Невірний ввід");
         }
+    }
+
+    public static void ShowError(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Помилка");
+        alert.setHeaderText(message);
+        alert.showAndWait();
     }
 
     public static void main(String[] args) {

@@ -4,9 +4,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,18 +16,19 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import javafx.scene.control.TableView;
-
+/**
+ * @author Kukuiev Ruslan KN-221A
+ **/
 public class DictionaryController extends Application {
 
     @FXML
     private TableView<Map.Entry<String, String>> DictionaryTable;
 
     @FXML
-    private  TableColumn<String, String> uaColumn;
+    private TableColumn<String, String> uaColumn;
 
     @FXML
-    private  TableColumn<String, String> enColumn;
+    private TableColumn<String, String> enColumn;
 
     @FXML
     public TextField ua;
@@ -45,7 +44,6 @@ public class DictionaryController extends Application {
 
     @FXML
     public void initialize() {
-        // Set up the table columns
         TableColumn<Map.Entry<String, String>, String> uaCol = new TableColumn<>("Українська");
         uaCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getKey()));
 
@@ -54,16 +52,14 @@ public class DictionaryController extends Application {
 
         DictionaryTable.getColumns().addAll(uaCol, enCol);
 
-        // Set up the table data
         DictionaryTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         tableData = FXCollections.observableArrayList(dictionary.entrySet());
         DictionaryTable.setItems(tableData);
     }
 
-    // Остальной код
     @Override
     public void start(Stage stage) throws Exception {
-        Pane root = (Pane)FXMLLoader.load(getClass().getResource("Dictionary.fxml"));
+        Pane root = (Pane) FXMLLoader.load(getClass().getResource("Dictionary.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Переписи населення");
@@ -75,30 +71,43 @@ public class DictionaryController extends Application {
     }
 
     public void AddWords(javafx.event.ActionEvent actionEvent) {
+        if (ua.getText().isEmpty() || en.getText().isEmpty()) {
+            ShowError("Не може бути пусте поле");
+            return;
+        }
+
+        if (!en.getText().matches("[а-яА-ЯІіЇїЄєҐґ']+")) {
+            ShowError(en.getText() + " - Не є українським словом");
+        }
+
+        if (!ua.getText().matches("[a-zA-Z]+")){
+            ShowError(ua.getText() + " - Не є англійськи словом");
+        }
+
         DictionaryTable.getSelectionModel().clearSelection();
-
-        // Add the new word to the dictionary
         dictionary.put(ua.getText(), en.getText());
-
-        // Update the table data
         tableData.setAll(dictionary.entrySet());
     }
 
     public void SearchWord(ActionEvent actionEvent) {
         DictionaryTable.getSelectionModel().clearSelection();
-        
+
         String keyword = findWordField.getText();
 
-        // Очистите предыдущий результат поиска
         DictionaryTable.getSelectionModel().clearSelection();
 
-        // Ищем элементы, содержащие ключевое слово
         for (int i = 0; i < tableData.size(); i++) {
             if (tableData.get(i).getKey().equals(keyword) || tableData.get(i).getValue().equals(keyword)) {
-                // Если элемент содержит ключевое слово, выделяем его в таблице
                 DictionaryTable.getSelectionModel().select(i);
                 DictionaryTable.scrollTo(i);
             }
         }
+    }
+
+    public static void ShowError(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Помилка");
+        alert.setHeaderText(message);
+        alert.showAndWait();
     }
 }

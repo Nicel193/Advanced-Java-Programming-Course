@@ -20,10 +20,10 @@
       <VBox layoutX="63.0" layoutY="40.0" prefHeight="323.0" prefWidth="207.0">
          <children>
                 <Button mnemonicParsing="false" onAction="#SearchWord" prefHeight="26.0" prefWidth="207.0" text="Пошук" />
-            <TextField fx:id="findWordField" layoutX="10.0" layoutY="103.0" prefHeight="26.0" prefWidth="150.0" />
+            <TextField fx:id="findWordField" layoutX="10.0" layoutY="103.0" prefHeight="26.0" prefWidth="150.0" promptText="Знайти слово" />
                   <Button mnemonicParsing="false" onAction="#AddWords" prefHeight="31.0" prefWidth="262.0" text="Додати" />
-                  <TextField fx:id="ua" prefHeight="26.0" prefWidth="150.0" />
-            <TextField fx:id="en" prefHeight="26.0" prefWidth="150.0" />
+                  <TextField fx:id="ua" prefHeight="26.0" prefWidth="150.0" promptText="Англійське слово" />
+            <TextField fx:id="en" prefHeight="26.0" prefWidth="150.0" promptText="Українське слово" />
          </children>
       </VBox>
     </children>

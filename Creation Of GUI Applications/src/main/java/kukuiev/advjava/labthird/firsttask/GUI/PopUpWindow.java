@@ -5,6 +5,9 @@ import javafx.stage.FileChooser;
 
 import java.io.File;
 
+/**
+ * @author Kukuiev Ruslan KN-221A
+ **/
 public class PopUpWindow {
     /**
      * Діалогове вікно довільного повідомлення

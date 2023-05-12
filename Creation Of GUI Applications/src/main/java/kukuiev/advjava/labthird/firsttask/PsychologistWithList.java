@@ -35,6 +35,10 @@ public class PsychologistWithList extends Doctor {
         });
     }
 
+    public Reception get_last_reception() {
+        return receptions.get(receptions.size() - 1);
+    }
+
     @Override
     public int get_receptions_count() {
         return receptions.size();

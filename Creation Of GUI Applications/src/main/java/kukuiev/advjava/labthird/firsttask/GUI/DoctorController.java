@@ -25,6 +25,9 @@ import java.util.ResourceBundle;
 import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
 
+/**
+ * @author Kukuiev Ruslan KN-221A
+ **/
 public class DoctorController implements Initializable {
 
     private PsychologistWithList doctor;
@@ -82,9 +85,14 @@ public class DoctorController implements Initializable {
 
     @FXML
     void doSearchByWord(ActionEvent event) {
-        textAreaResults.setText("");
-
         if (doctor == null) return;
+
+        if (textFieldText.getText().isEmpty()) {
+            PopUpWindow.showError("Не можна здійснити пошук, бо поле пошуку пусте");
+            return;
+        }
+
+        textAreaResults.setText("");
 
         for (int i = 0; i < doctor.get_receptions_count(); i++) {
             Reception c = (Reception) doctor.get_receptions()[i];
@@ -96,9 +104,14 @@ public class DoctorController implements Initializable {
 
     @FXML
     void doSearchBySubstring(ActionEvent event) {
-        textAreaResults.setText("");
-
         if (doctor == null) return;
+
+        if (textFieldText.getText().isEmpty()) {
+            PopUpWindow.showError("Не можна здійснити пошук, бо поле пошуку пусте");
+            return;
+        }
+
+        textAreaResults.setText("");
 
         for (int i = 0; i < doctor.get_receptions_count(); i++) {
             Reception c = (Reception) doctor.get_receptions()[i];
@@ -171,7 +184,12 @@ public class DoctorController implements Initializable {
 
     @FXML
     void doAdd(ActionEvent event) {
-        if(doctor == null) return;
+        if (doctor == null) return;
+
+        if (doctor.get_last_reception().isEmpty()) {
+            PopUpWindow.showError("Не можна додати новий елемент, бо минулий незаповнений");
+            return;
+        }
 
         doctor.add_reception(new Reception("", "", 0));
         updateTable(); // створюємо нові дані
@@ -191,7 +209,7 @@ public class DoctorController implements Initializable {
 
     @FXML
     void doSortByVisitors(ActionEvent event) {
-        if(doctor == null) return;
+        if (doctor == null) return;
 
         doctor.sort_number_of_visitors();
         updateTable();
@@ -199,7 +217,7 @@ public class DoctorController implements Initializable {
 
     @FXML
     void doSortByComments(ActionEvent event) {
-        if(doctor == null) return;
+        if (doctor == null) return;
 
         doctor.sort_alphabetic_comments();
         updateTable();

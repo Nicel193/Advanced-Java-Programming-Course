@@ -7,6 +7,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * @author Kukuiev Ruslan KN-221A
+ **/
 public class UpdateTable {
     public void updateComment(TableColumn.CellEditEvent<Reception, String> t) {
         Reception c = t.getTableView().getItems().get(t.getTablePosition().getRow());

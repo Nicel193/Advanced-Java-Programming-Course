@@ -58,9 +58,12 @@ public class Reception implements Comparable<Reception> {
         this.day = day;
     }
 
-    public  void set_number_visitors(int number_visitors)
-    {
+    public void set_number_visitors(int number_visitors) {
         this.number_visitors = number_visitors;
+    }
+
+    public boolean isEmpty() {
+        return number_visitors == 0 || day.isEmpty() || comment.isEmpty();
     }
 
     /**
@@ -79,15 +82,13 @@ public class Reception implements Comparable<Reception> {
         return this.number_visitors == reception.number_visitors && comment.equals(reception.comment) && day.equals(reception.day);
     }
 
-    public Boolean containsWord(String rightWord)
-    {
+    public Boolean containsWord(String rightWord) {
         return Pattern.compile("\\W+", Pattern.UNICODE_CHARACTER_CLASS)
                 .splitAsStream(getComment())
                 .anyMatch(word -> word.equals(rightWord));
     }
 
-    public Boolean containsSubstring(String rightWord)
-    {
+    public Boolean containsSubstring(String rightWord) {
         return getComment().contains(rightWord);
     }
 

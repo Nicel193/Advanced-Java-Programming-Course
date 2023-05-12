@@ -22,5 +22,10 @@
       <comment>А блин, зря раньше не пошел</comment>
       <number__visitors>8</number__visitors>
     </kukuiev.advjava.labthird.firsttask.Reception>
+    <kukuiev.advjava.labthird.firsttask.Reception>
+      <day>12.05.2023</day>
+      <comment>Доктор оказался хорошим, назначил макаронную терапию</comment>
+      <number__visitors>1</number__visitors>
+    </kukuiev.advjava.labthird.firsttask.Reception>
   </receptions>
 </kukuiev.advjava.labthird.firsttask.PsychologistWithStreams>
