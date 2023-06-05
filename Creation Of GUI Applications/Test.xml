@@ -4,28 +4,23 @@
   <receptions>
     <kukuiev.advjava.labthird.firsttask.Reception>
       <day>08.01.2005</day>
-      <comment>Мне не понравилось</comment>
+      <comment>I did not like</comment>
       <number__visitors>45</number__visitors>
     </kukuiev.advjava.labthird.firsttask.Reception>
     <kukuiev.advjava.labthird.firsttask.Reception>
       <day>05.03.2004</day>
-      <comment>Ну ты реально молодец</comment>
+      <comment>Well you are really good</comment>
       <number__visitors>23</number__visitors>
     </kukuiev.advjava.labthird.firsttask.Reception>
     <kukuiev.advjava.labthird.firsttask.Reception>
       <day>06.04.2005</day>
-      <comment>Спасибо, остался без денег</comment>
+      <comment>Thanks, no money</comment>
       <number__visitors>5</number__visitors>
     </kukuiev.advjava.labthird.firsttask.Reception>
     <kukuiev.advjava.labthird.firsttask.Reception>
       <day>15.09.2004</day>
-      <comment>А блин, зря раньше не пошел</comment>
-      <number__visitors>8</number__visitors>
-    </kukuiev.advjava.labthird.firsttask.Reception>
-    <kukuiev.advjava.labthird.firsttask.Reception>
-      <day>12.05.2023</day>
-      <comment>Доктор оказался хорошим, назначил макаронную терапию</comment>
-      <number__visitors>1</number__visitors>
+      <comment>Damn, I didn&apos;t go earlier</comment>
+      <number__visitors>9</number__visitors>
     </kukuiev.advjava.labthird.firsttask.Reception>
   </receptions>
 </kukuiev.advjava.labthird.firsttask.PsychologistWithStreams>

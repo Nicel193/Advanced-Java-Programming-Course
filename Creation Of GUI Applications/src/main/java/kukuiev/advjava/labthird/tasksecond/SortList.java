@@ -1,32 +1,39 @@
+package kukuiev.advjava.labthird.tasksecond;
+
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+
+import java.util.Collections;
 
 /**
  * @author Kukuiev Ruslan KN-221A
  **/
 public class SortList {
-    public static void main(String[] args) {
-        ObservableList<Double> list = FXCollections.observableArrayList(-3.2, 1.5, -2.7, 0.8, -4.1, 3.7, -1.9);
-        System.out.println("Початковий список: " + list);
+    static void orderList(ObservableList<Double> list) {
+        ObservableList<Double> negList = FXCollections.observableArrayList();
+        int positiveIndex = 0;
 
-        ObservableList<Double> positives = FXCollections.observableArrayList();
-        ObservableList<Double> negatives = FXCollections.observableArrayList();
-        for (Double number : list) {
-            if (number >= 0) {
-                positives.add(number);
-                System.out.println("Список додатніх чисел" + positives.toString());
-            } else {
-                negatives.add(number);
-                System.out.println("Список від'ємних чисел" + negatives.toString());
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i) < 0) {
+                negList.add(list.get(i));
+            }
+            if (list.get(i) >= 0) {
+                Collections.swap(list, i, positiveIndex);
+                positiveIndex++;
             }
         }
 
-        FXCollections.reverse(negatives);
-        System.out.println("Міняємо порядок елементів від'ємного списку" + negatives.toString());
+        for (int i = positiveIndex, j = negList.size() - 1; i < list.size(); i++, j--) {
+            list.set(i, negList.get(j));
+        }
+    }
 
-        ObservableList<Double> sortedList = FXCollections.observableArrayList();
-        sortedList.addAll(positives);
-        sortedList.addAll(negatives);
-        System.out.println("Змінений список: " + sortedList);
+    public static void main(String[] args) {
+        ObservableList<Double> list = FXCollections.observableArrayList();
+        list.addListener((ListChangeListener<? super Double>) c -> System.out.println(list));
+        list.addAll(-2.7, -4.1, 1.5, 0.8, -3.2, 3.7, -1.9);
+        orderList(list);
+        list.clear();
     }
 }

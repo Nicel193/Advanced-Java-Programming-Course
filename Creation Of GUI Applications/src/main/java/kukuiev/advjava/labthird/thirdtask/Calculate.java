@@ -85,6 +85,9 @@ public class Calculate extends Application {
         primaryStage.show();
     }
 
+    /**
+     * Calculate values
+     **/
     private void calculate() {
         try {
             double num1 = Double.parseDouble(num1Field.getText());
